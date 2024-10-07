@@ -20,12 +20,11 @@ app.post("/reload", (req, res) => {
     let secondsPassed = timePassed/1000;
     let timeForTick = 20;
     if(secondsPassed/timeForTick >= 1) { //Add check for 0, substr more than once(not working ??), change to 1h 
-        let subtract = secondsPassed/timeForTick;
+        let subtract = Math.floor(secondsPassed/timeForTick);
         console.log (subtract)
-        
-        tamagotchi.happiness = Math.floor(tamagotchi.happiness-subtract);
-        tamagotchi.hunger = Math.floor(tamagotchi.hunger-subtract);
-        tamagotchi.energy = Math.floor(tamagotchi-subtract);
+        tamagotchi.happiness -= subtract;
+        tamagotchi.hunger -= subtract;
+        tamagotchi.energy -= subtract;
         tamagotchi.lastUpdate = req.body.lastUpdate;
     }
     res.json(req.body);
