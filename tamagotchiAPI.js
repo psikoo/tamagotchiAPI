@@ -22,6 +22,8 @@ app.post("/postTamagotchi", (req, res) => {
     let hunger = req.body.hunger;
     let energy = req.body.energy;
 
+    console.log(req.body);
+
     const fileName = './tamagotchi.json';
     const file = require(fileName);
 
