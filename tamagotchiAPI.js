@@ -18,9 +18,7 @@ app.get("/getTamagotchi", async (req, res) => {
 app.post("/reload", (req, res) => {
     let lastUpdate = req.body.lastUpdate;
 
-    if(((new Date().valueOf())-lastUpdate) > 1000)  {
-        console.log("diff update")
-    }
+    console.log((new Date().valueOf())-lastUpdate)
 
     const fileName = './tamagotchi.json';
     const file = require(fileName);
