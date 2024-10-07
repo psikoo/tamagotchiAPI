@@ -1,1 +1,1 @@
-node .tamagotchiAPI.js
+node .\tamagotchiAPI.js
