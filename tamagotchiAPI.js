@@ -18,18 +18,18 @@ app.get("/getTamagotchi", async (req, res) => {
 app.post("/postTamagotchi", (req, res) => {
     let name = req.body.name;
     let bornTime = req.body.bornTime;
-    let happiness = req.body.stats.happiness;
-    let hunger = req.body.stats.hunger;
-    let energy = req.body.stats.energy;
+    let happiness = req.body.happiness;
+    let hunger = req.body.hunger;
+    let energy = req.body.energy;
 
     const fileName = './tamagotchi.json';
     const file = require(fileName);
 
     file.name = name;
     file.bornTime = bornTime;
-    file.stats.happiness = happiness;
-    file.stats.hunger = hunger;
-    file.stats.energy = energy;
+    file.happiness = happiness;
+    file.hunger = hunger;
+    file.energy = energy;
 
     fs.writeFile(fileName, JSON.stringify(file), function writeJSON(err) {
     if (err) return console.log(err);
