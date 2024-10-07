@@ -1,6 +1,5 @@
 const express = require("express");
 const cors = require('cors')
-const fs = require("fs");
 
 let app = express();
 app.use(express.json());
@@ -19,10 +18,12 @@ app.get("/getTamagotchi", async (req, res) => {
 app.post("/reload", (req, res) => {
     let timePassed = (new Date().valueOf())-tamagotchi.lastUpdate;
     let secondsPassed = timePassed/1000;
-    if(secondsPassed >= 20) {
-        tamagotchi.happiness--;
-        tamagotchi.hunger--;
-        tamagotchi.energy--;
+    let timeForTick = 20;
+    if(secondsPassed/timeForTick >= 1) { //Add check for 0, substr more than once, change to 1h
+        let subtract = secondsPassed/timeForTick;
+        tamagotchi.happiness -= subtract;
+        tamagotchi.hunger -= subtract;
+        tamagotchi.energy -= subtract;
         tamagotchi.lastUpdate = req.body.lastUpdate;
     }
     res.json(req.body);
