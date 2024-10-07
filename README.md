@@ -1,6 +1,6 @@
 # tamagotchiAPI
 
-tamagotchiAPI is a simple API made with express used to power a community tamagotchi. This is a supplementary project to [website](https://psikoo.github.io/website/sub/tama/tama.html).
+tamagotchiAPI is a simple API made with express used to power a community tamagotchi. This is a supplementary project to [website](https://github.com/psikoo/website).
 
 ## Running the API
 
