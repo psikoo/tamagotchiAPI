@@ -6,34 +6,25 @@ let app = express();
 app.use(express.json());
 app.use(cors());
 
+const tamagotchi = require("./tamagotchi.json");
+
 app.get("/", function (req, res) {
     res.send("🟩 API is running");
 })
 
 app.get("/getTamagotchi", async (req, res) => {
-    const tamagotchi = require("./tamagotchi.json");
     res.json(tamagotchi);
 });
 
 app.post("/reload", (req, res) => {
-    const tamagotchi = require("./tamagotchi.json");
     let timePassed = (new Date().valueOf())-tamagotchi.lastUpdate;
     let secondsPassed = timePassed/1000;
-    console.log(secondsPassed +"seconds")
-    if(secondsPassed >= 10) {
-        tamagotchi.happiness--
+    if(secondsPassed >= 20) {
+        tamagotchi.happiness--;
+        tamagotchi.happiness--;
+        tamagotchi.happiness--;
+        tamagotchi.lastUpdate = req.body.lastUpdate;
     }
-
-    let lastUpdate = req.body.lastUpdate;
-
-    const fileName = './tamagotchi.json';
-    const file = require(fileName);
-
-    //file.lastUpdate = lastUpdate;
-
-    //fs.writeFile(fileName, JSON.stringify(file), function writeJSON(err) {
-        //if (err) return console.log(err); 
-    //});
     res.json(req.body);
 })
 
