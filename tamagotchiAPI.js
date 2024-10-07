@@ -1,18 +1,16 @@
 var express = require("express");
 const fs = require("fs");
 
-const tama = require("./tama.json");
-
-
 let app = express();
 app.use(express.json())
 
 app.get("/", function (req, res) {
+    const tamagotchi = require("./tamagotchi.json");
     res.send("🟩 API is running");
 })
 
 app.get("/getTamagotchi", async (req, res) => {
-    res.json(tama);
+    res.json(tamagotchi);
 });
 
 app.post("/postTamagotchi", (req, res) => {
@@ -22,7 +20,7 @@ app.post("/postTamagotchi", (req, res) => {
     let hunger = req.body.stats.hunger;
     let energy = req.body.stats.energy;
 
-    const fileName = './tama.json';
+    const fileName = './tamagotchi.json';
     const file = require(fileName);
 
     file.name = name;
