@@ -21,34 +21,20 @@ app.post("/reload", (req, res) => {
     let secondsPassed = timePassed/1000;
     if(secondsPassed >= 20) {
         tamagotchi.happiness--;
-        tamagotchi.happiness--;
-        tamagotchi.happiness--;
+        tamagotchi.hunger--;
+        tamagotchi.energy--;
         tamagotchi.lastUpdate = req.body.lastUpdate;
     }
     res.json(req.body);
 })
 
 app.post("/postTamagotchi", (req, res) => {
-    let name = req.body.name;
-    let bornTime = req.body.bornTime;
-    let happiness = req.body.happiness;
-    let hunger = req.body.hunger;
-    let energy = req.body.energy;
-    let lastUpdate = req.body.lastUpdate;
-
-    const fileName = './tamagotchi.json';
-    const file = require(fileName);
-
-    file.name = name;
-    file.bornTime = bornTime;
-    file.happiness = happiness;
-    file.hunger = hunger;
-    file.energy = energy;
-    file.lastUpdate = lastUpdate;
-
-    fs.writeFile(fileName, JSON.stringify(file), function writeJSON(err) {
-        if (err) return console.log(err);
-    });
+    tamagotchi.name = req.body.name;
+    tamagotchi.bornTime = req.body.bornTime;
+    tamagotchi.happiness = req.body.happiness;
+    tamagotchi.hunger = req.body.hunger;
+    tamagotchi.energy = req.body.energy;
+    tamagotchi.lastUpdate = req.body.lastUpdate;
     res.json(req.body);
 })
 
