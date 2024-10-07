@@ -17,7 +17,7 @@ app.get("/getTamagotchi", async (req, res) => {
 
 app.post("/reload", (req, res) => {
     const tamagotchi = require("./tamagotchi.json");
-    console.log(tamagotchi.lastUpdate-(new Date().valueOf()))
+    console.log((new Date().valueOf())-tamagotchi.lastUpdate)
 
     let lastUpdate = req.body.lastUpdate;
 
@@ -26,9 +26,9 @@ app.post("/reload", (req, res) => {
 
     file.lastUpdate = lastUpdate;
 
-    fs.writeFile(fileName, JSON.stringify(file), function writeJSON(err) {
-        if (err) return console.log(err); 
-    });
+    //fs.writeFile(fileName, JSON.stringify(file), function writeJSON(err) {
+        //if (err) return console.log(err); 
+    //});
     res.json(req.body);
 })
 
