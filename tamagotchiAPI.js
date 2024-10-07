@@ -18,16 +18,16 @@ app.get("/getTamagotchi", async (req, res) => {
 app.post("/reload", (req, res) => {
     let timePassed = (new Date().valueOf())-tamagotchi.lastUpdate;
     let secondsPassed = timePassed/1000;
-    let timeForTick = 20;
+    let timeForTick = 10;
     if(secondsPassed/timeForTick >= 1) { // change to 1h 
         let subtract = Math.floor(secondsPassed/timeForTick);
         if((tamagotchi.happiness - subtract <= 0) || (tamagotchi.hunger - subtract <= 0) || (tamagotchi.energy - subtract <= 0)) {
-            if(tamagotchi.state != "Dead") { tamagotchi.deadTime = new Date().valueOf(); }
             tamagotchi.state = "Dead";
             tamagotchi.happiness = 0;
             tamagotchi.hunger = 0;
             tamagotchi.energy = 0;
         } else {
+            tamagotchi.deadTime = new Date().valueOf();
             tamagotchi.happiness -= subtract;
             tamagotchi.hunger -= subtract;
             tamagotchi.energy -= subtract;
