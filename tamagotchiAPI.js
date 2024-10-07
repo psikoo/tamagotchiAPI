@@ -5,11 +5,11 @@ let app = express();
 app.use(express.json())
 
 app.get("/", function (req, res) {
-    const tamagotchi = require("./tamagotchi.json");
     res.send("🟩 API is running");
 })
 
 app.get("/getTamagotchi", async (req, res) => {
+    const tamagotchi = require("./tamagotchi.json");
     res.json(tamagotchi);
 });
 
