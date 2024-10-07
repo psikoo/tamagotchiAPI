@@ -16,12 +16,12 @@ app.get("/getTamagotchi", async (req, res) => {
 });
 
 app.post("/reload", (req, res) => {
-    let name = req.body.name;
+    let lastUpdate = req.body.lastUpdate;
 
     const fileName = './tamagotchi.json';
     const file = require(fileName);
 
-    file.name = name;
+    file.lastUpdate = lastUpdate;
 
     fs.writeFile(fileName, JSON.stringify(file), function writeJSON(err) {
         if (err) return console.log(err); 
@@ -49,7 +49,6 @@ app.post("/postTamagotchi", (req, res) => {
 
     fs.writeFile(fileName, JSON.stringify(file), function writeJSON(err) {
         if (err) return console.log(err);
-        console.log(JSON.stringify(file));
     });
     res.json(req.body);
 })
