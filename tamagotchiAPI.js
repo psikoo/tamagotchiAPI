@@ -19,9 +19,15 @@ app.post("/reload", (req, res) => {
     let timePassed = (new Date().valueOf())-tamagotchi.lastUpdate;
     let secondsPassed = timePassed/1000;
     let timeForTick = 20;
-    if(secondsPassed/timeForTick >= 1) { //Add check for 0, substr more than once(not working ??), change to 1h 
+    if(secondsPassed/timeForTick >= 1) { //Add check for 0, change to 1h 
         let subtract = Math.floor(secondsPassed/timeForTick);
-        console.log (subtract)
+        if((tamagotchi.happiness - subtract <= 0) || (tamagotchi.hunger - subtract <= 0) || (tamagotchi.energy - subtract <= 0)) {
+            tamagotchi.name = "DEAD";
+            tamagotchi.bornTime = NaN;
+            tamagotchi.happiness = 0;
+            tamagotchi.hunger = 0;
+            tamagotchi.energy = 0;
+        }
         tamagotchi.happiness -= subtract;
         tamagotchi.hunger -= subtract;
         tamagotchi.energy -= subtract;
