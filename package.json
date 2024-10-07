@@ -1,0 +1,15 @@
+{
+  "name": "tamagotchiapi",
+  "version": "1.0.0",
+  "description": "API for my tamagotchi site",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "psikoo",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.21.0",
+    "tamagotchiapi": "file:"
+  }
+}
