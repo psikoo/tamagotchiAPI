@@ -16,15 +16,17 @@ app.get("/getTamagotchi", async (req, res) => {
 });
 
 app.get("/play", async (req, res) => {
-    if(tamagotchi.happiness < 10) { tamagotchi.happiness++; tamagotchi.energy--; }
+    if(tamagotchi.happiness < 10) { tamagotchi.happiness++; }
+    tamagotchi.energy--;
     res.json(tamagotchi);
 });
 app.get("/feed", async (req, res) => {
-    if(tamagotchi.happiness < 10) { tamagotchi.hunger++; tamagotchi.energy++; }
+    if(tamagotchi.hunger < 10 && tamagotchi.energy < 10) { tamagotchi.hunger++; tamagotchi.energy++; }
     res.json(tamagotchi);
 });
 app.get("/rest", async (req, res) => {
-    if(tamagotchi.happiness < 10) { tamagotchi.energy++; tamagotchi.hunger--; }
+    if(tamagotchi.energy < 10) { tamagotchi.energy++; }
+    tamagotchi.hunger--;
     res.json(tamagotchi);
 });
 
