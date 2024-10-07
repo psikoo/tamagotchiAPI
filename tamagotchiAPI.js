@@ -24,7 +24,7 @@ app.post("/reload", (req, res) => {
     const fileName = './tamagotchi.json';
     const file = require(fileName);
 
-    file.lastUpdate = lastUpdate;
+    //file.lastUpdate = lastUpdate;
 
     //fs.writeFile(fileName, JSON.stringify(file), function writeJSON(err) {
         //if (err) return console.log(err); 
