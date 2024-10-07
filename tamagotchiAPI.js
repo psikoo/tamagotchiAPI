@@ -15,14 +15,27 @@ app.get("/getTamagotchi", async (req, res) => {
     res.json(tamagotchi);
 });
 
+app.post("/reload", (req, res) => {
+    let name = req.body.name;
+
+    const fileName = './tamagotchi.json';
+    const file = require(fileName);
+
+    file.name = name;
+
+    fs.writeFile(fileName, JSON.stringify(file), function writeJSON(err) {
+        if (err) return console.log(err); 
+    });
+    res.json(req.body);
+})
+
 app.post("/postTamagotchi", (req, res) => {
     let name = req.body.name;
     let bornTime = req.body.bornTime;
     let happiness = req.body.happiness;
     let hunger = req.body.hunger;
     let energy = req.body.energy;
-
-    console.log(req.body);
+    let lastUpdate = req.body.lastUpdate;
 
     const fileName = './tamagotchi.json';
     const file = require(fileName);
@@ -32,9 +45,10 @@ app.post("/postTamagotchi", (req, res) => {
     file.happiness = happiness;
     file.hunger = hunger;
     file.energy = energy;
+    file.lastUpdate = lastUpdate;
 
     fs.writeFile(fileName, JSON.stringify(file), function writeJSON(err) {
-    if (err) return console.log(err);
+        if (err) return console.log(err);
         console.log(JSON.stringify(file));
     });
     res.json(req.body);
