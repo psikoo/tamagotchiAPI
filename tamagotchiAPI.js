@@ -23,7 +23,6 @@ app.post("/reload", (req, res) => {
         let subtract = Math.floor(secondsPassed/timeForTick);
         if((tamagotchi.happiness - subtract <= 0) || (tamagotchi.hunger - subtract <= 0) || (tamagotchi.energy - subtract <= 0)) {
             tamagotchi.name = "DEAD";
-            tamagotchi.bornTime = NaN;
             tamagotchi.happiness = 0;
             tamagotchi.hunger = 0;
             tamagotchi.energy = 0;
@@ -38,7 +37,9 @@ app.post("/reload", (req, res) => {
 
 app.post("/postTamagotchi", (req, res) => {
     tamagotchi.name = req.body.name;
+    tamagotchi.state = req.body.state;
     tamagotchi.bornTime = req.body.bornTime;
+    tamagotchi.deadTime = req.body.deadTime;
     tamagotchi.happiness = req.body.happiness;
     tamagotchi.hunger = req.body.hunger;
     tamagotchi.energy = req.body.energy;
