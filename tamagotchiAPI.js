@@ -33,7 +33,7 @@ app.get("/rest", async (req, res) => {
 app.post("/reload", (req, res) => {
     let timePassed = (new Date().valueOf())-tamagotchi.lastUpdate;
     let secondsPassed = timePassed/1000;
-    let timeForTick = 10; // change to 3600
+    let timeForTick = 3600; // change to 3600 (seconds)
     if(secondsPassed/timeForTick >= 1) { 
         let subtract = Math.floor(secondsPassed/timeForTick);
         if((tamagotchi.happiness - subtract <= 0) || (tamagotchi.hunger - subtract <= 0) || (tamagotchi.energy - subtract <= 0)) {
