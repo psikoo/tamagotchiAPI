@@ -2,7 +2,7 @@
 
 tamagotchiAPI is a simple API made with express used to power a community tamagotchi. This is a supplementary project to [website](https://psikoo.github.io/website/sub/tama/tama.html).
 
-## Running the proxy
+## Running the API
 
 **Usage information:**
 
@@ -16,7 +16,7 @@ This script runs with Node.js and npm. To run the script you must install Node.j
 npm install
 ```
 
-### Actually running the proxy
+### Actually running the API
 
 **start.cmd:**
 
