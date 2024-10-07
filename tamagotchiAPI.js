@@ -24,7 +24,7 @@ app.post("/postTamagotchi", (req, res) => {
 
     const fileName = './tama.json';
     const file = require(fileName);
-    
+
     file.name = name;
     file.bornTime = bornTime;
     file.stats.happiness = happiness;
@@ -34,7 +34,6 @@ app.post("/postTamagotchi", (req, res) => {
     fs.writeFile(fileName, JSON.stringify(file), function writeJSON(err) {
     if (err) return console.log(err);
         console.log(JSON.stringify(file));
-        console.log('writing to ' + "./tama.json");
     });
     res.json(req.body);
 })
