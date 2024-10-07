@@ -17,7 +17,12 @@ app.get("/getTamagotchi", async (req, res) => {
 
 app.post("/reload", (req, res) => {
     const tamagotchi = require("./tamagotchi.json");
-    console.log((new Date().valueOf())-tamagotchi.lastUpdate)
+    let timePassed = (new Date().valueOf())-tamagotchi.lastUpdate;
+    let secondsPassed = timePassed/1000;
+    console.log(secondsPassed +"seconds")
+    if(secondsPassed >= 10) {
+        tamagotchi.happiness--
+    }
 
     let lastUpdate = req.body.lastUpdate;
 
