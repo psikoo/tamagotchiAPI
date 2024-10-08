@@ -18,9 +18,9 @@ app.get("/getTamagotchi", async (req, res) => {
 app.get("/play", async (req, res) => {
     if(tamagotchi.happiness < 10) { 
         tamagotchi.happiness++; 
-        res.send("Your tamagotchi is happier now");
+        res.send("Your Tamagotchi feels happier");
     } else { 
-        res.send("Your tamagotchi is too exited to keep on playing");
+        res.send("Your Tamagotchi is too happy, you made it tired");
     }
     tamagotchi.hunger--;
     tamagotchi.energy--;
@@ -29,17 +29,17 @@ app.get("/feed", async (req, res) => {
     if(tamagotchi.hunger < 10 && tamagotchi.energy < 10) { 
         tamagotchi.hunger++; 
         tamagotchi.energy++; 
-        res.send("Your tamagotchi enjoys its lunch");
+        res.send("Your Tamagotchi feels fuller");
     } else {
-        res.send("Your tamagotchi is too full or energetic");
+        res.send("Your Tamagotchi is too full or energetic to eat");
     }
 });
 app.get("/rest", async (req, res) => {
     if(tamagotchi.energy < 10) { 
         tamagotchi.energy++;
-        res.send("Your tamagotchi feels rested");
+        res.send("Your Tamagotchi feels rested");
     } else {
-        res.send("Your tamagotchi is too energetic");
+        res.send("Your Tamagotchi is too energetic, you made it hungry");
     }
     tamagotchi.hunger--;
 });
