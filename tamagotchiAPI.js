@@ -1,5 +1,10 @@
 const express = require("express");
-const cors = require('cors')
+const https = require("https");
+const fs = require("fs");
+const path = require("path");
+const cors = require('cors');
+
+require('dotenv').config()
 
 let app = express();
 app.use(express.json());
@@ -78,7 +83,13 @@ app.post("/postTamagotchi", (req, res) => {
     res.json(req.body);
 })
 
-// Use port 3001 to connect to the server
-app.listen(3001, function () {
+// Use port 3001 to connect to the server over HTTPS
+const options = {
+    cert: fs.readFileSync(path.join(process.env.SSLPATH, "fullchain.pem")),
+    key: fs.readFileSync(path.join(process.env.SSLPATH, "privkey.pem")),
+};
+const server = https.createServer(options, app);
+
+server.listen(3001, () => {
     console.log("🟩 Server started on port 3001");
 });
