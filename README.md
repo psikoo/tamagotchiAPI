@@ -10,7 +10,13 @@ This script runs with Node.js and npm. To run the script you must install Node.j
 
 **Before running:**
 
-- You need to install the needed dependencies by running the following command:
+- Create a ".env" file on the base the directory of the script and add the following contents to it:
+``` env
+SSLPATH="SSLPATH"
+```
+- SLLPATH should be the path to a folder holding your SSL certificates.
+
+- You also need to install the needed dependencies by running the following command:
 
 ```bash
 npm install
@@ -29,7 +35,7 @@ It starts the proxy server on port 3000.
 
 ### GET:
 - /getTamagotchi > returns a json containing the tamagotchi's information.
-- /play > increases the tamagotchi's hapiness and reduces it's energy.
+- /play > increases the tamagotchi's happiness and reduces it's energy.
 - /feed > increases the tamagotchi's food (hunger) and increases it's energy.
 - /rest > increases the tamagotchi's energy and reduces it's food (hunger).
 
